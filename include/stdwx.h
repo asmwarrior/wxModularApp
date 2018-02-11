@@ -1,23 +1,25 @@
 #ifndef IFLOOR_STDWX_H_
 #define IFLOOR_STDWX_H_
 
-#if defined(WIN32) || defined(WINDOWS)
-#include <windows.h>
-#include <winnt.h>
-#define PLUGIN_EXPORTED_API	WXEXPORT
-#else
-#define PLUGIN_EXPORTED_API	extern "C"
-#endif
-
 // SYSTEM INCLUDES
 // For compilers that support precompilation, includes "wx/wx.h".
 #include "wx/wxprec.h"
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
-//#ifndef WX_PRECOMP
+
+#ifndef WX_PRECOMP
     #include "wx/wx.h"
-//#endif
+#endif
+
+#if defined(WIN32) || defined(WINDOWS) || defined(__WINDOWS__)
+#include <wx/msw/wrapwin.h> // includes <windows.h> safely
+#include <winnt.h>
+#define PLUGIN_EXPORTED_API	WXEXPORT
+#else
+#define PLUGIN_EXPORTED_API	extern "C"
+#endif
+
 #include <wx/cmdline.h> 
 #include <wx/config.h>
 #include <wx/defs.h>
