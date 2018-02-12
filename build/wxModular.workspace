@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="wxModularCore.cbp" />
+		<Project filename="wxModularHost.cbp" />
+		<Project filename="wxGuiPluginBase.cbp" />
+		<Project filename="SampleGuiPlugin1.cbp" />
+		<Project filename="SampleGuiPlugin2.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>
