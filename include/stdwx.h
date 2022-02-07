@@ -86,12 +86,12 @@
 #define PLUGIN_EXPORTED_API	extern "C"
 #endif
 
-#include <wx/cmdline.h> 
+#include <wx/cmdline.h>
 #include <wx/config.h>
 #include <wx/defs.h>
 #include <wx/dir.h>
 #include <wx/display.h>
-#include <wx/dynlib.h> 
+#include <wx/dynlib.h>
 #include <wx/dynload.h>
 #include <wx/fileconf.h>
 #include <wx/filename.h>
@@ -101,7 +101,7 @@
 #include <wx/image.h>
 #include <wx/imaglist.h>
 #include <wx/intl.h>
-#include <wx/list.h> 
+#include <wx/list.h>
 #include <wx/notebook.h>
 #include <wx/stdpaths.h>
 #include <wx/sstream.h>
