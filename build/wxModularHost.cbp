@@ -62,9 +62,6 @@
 		</Unit>
 		<Unit filename="../wxModularHost/wxModularHostApp.cpp" />
 		<Unit filename="../wxModularHost/wxModularHostApp.h" />
-		<Extensions>
-			<code_completion />
-			<envvars />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

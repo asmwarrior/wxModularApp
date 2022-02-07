@@ -53,9 +53,6 @@
 		</Unit>
 		<Unit filename="../wxGuiPluginBase/wxGuiPluginWindowBase.cpp" />
 		<Unit filename="../wxGuiPluginBase/wxGuiPluginWindowBase.h" />
-		<Extensions>
-			<code_completion />
-			<envvars />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

@@ -47,9 +47,6 @@
 		<Unit filename="../wxModularCore/wxModularCore.h" />
 		<Unit filename="../wxModularCore/wxModularCoreSettings.cpp" />
 		<Unit filename="../wxModularCore/wxModularCoreSettings.h" />
-		<Extensions>
-			<code_completion />
-			<envvars />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

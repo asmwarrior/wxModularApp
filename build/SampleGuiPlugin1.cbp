@@ -62,9 +62,6 @@
 		<Unit filename="../wxGuiPluginBase/Declarations.h" />
 		<Unit filename="../wxGuiPluginBase/wxGuiPluginBase.h" />
 		<Unit filename="../wxGuiPluginBase/wxGuiPluginWindowBase.h" />
-		<Extensions>
-			<code_completion />
-			<envvars />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
