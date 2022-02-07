@@ -29,6 +29,7 @@
 					<Add library="wx_base$(WX_SUFFIX)-$(WX_VERSION).dll" />
 				</Linker>
 				<ExtraCommands>
+					<Add after="cmd /c if not exist bin\wxModularHost\$(TARGET_NAME)\plugins\gui\ mkdir bin\wxModularHost\$(TARGET_NAME)\plugins\gui" />
 					<Add after="cmd /c copy /y bin\$(APP_DIR)\$(TARGET_NAME)\$(APP_NAME).dll bin\wxModularHost\$(TARGET_NAME)\plugins\gui\$(APP_NAME).dll" />
 				</ExtraCommands>
 				<Environment>
