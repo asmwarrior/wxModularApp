@@ -19,8 +19,10 @@ class SampleModularCore : public wxModularCore
 {
 public:
 	virtual ~SampleModularCore();
-	virtual bool LoadAllPlugins(bool forceProgramPath);
-	virtual bool UnloadAllPlugins();
+
+	/// load the plugins, and set all the plugins' event handler to the same common one
+	virtual bool LoadAllPlugins(bool forceProgramPath) override;
+	virtual bool UnloadAllPlugins() override;
 
 	const wxNonGuiPluginBaseList & GetNonGuiPlugins() const;
 	const wxGuiPluginBaseList & GetGuiPlugins() const;

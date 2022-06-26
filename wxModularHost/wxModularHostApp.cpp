@@ -122,7 +122,7 @@ void wxModularHostApp::TestNonGuiPlugins()
 {
 	if(m_PluginManager)
 	{
-		if(m_PluginManager->LoadAllPlugins(true))
+		if(m_PluginManager->LoadAllPlugins(true)) // true means we load dlls from the same folder of the host(executable) app
 		{
 			for(wxNonGuiPluginBaseList::Node * node = 
 				m_PluginManager->GetNonGuiPlugins().GetFirst(); node; node = node->GetNext())

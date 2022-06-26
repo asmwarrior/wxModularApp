@@ -14,6 +14,8 @@ bool SampleModularCore::LoadAllPlugins(bool forceProgramPath)
 {
 	wxString pluginsRootDir = GetPluginsPath(forceProgramPath);
 	bool result = true;
+
+	// load non gui plugins
 	result &= LoadPlugins<wxNonGuiPluginBase,
 		wxNonGuiPluginBaseList,
 		wxNonGuiPluginToDllDictionary,
@@ -21,6 +23,8 @@ bool SampleModularCore::LoadAllPlugins(bool forceProgramPath)
 		m_NonGuiPlugins, 
 		m_MapNonGuiPluginsDll,
 		wxT("nongui"));
+
+    // load gui plugins
 	result &= LoadPlugins<wxGuiPluginBase,
 		wxGuiPluginBaseList,
 		wxGuiPluginToDllDictionary,
@@ -34,7 +38,7 @@ bool SampleModularCore::LoadAllPlugins(bool forceProgramPath)
 		node; node = node->GetNext())
 	{
 		wxGuiPluginBase * plugin = node->GetData();
-		plugin->SetEventHandler(m_Handler);
+		plugin->SetEventHandler(m_Handler); // set all the plugins' event handler
 	}
 	return true;
 }

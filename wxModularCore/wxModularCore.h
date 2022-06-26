@@ -22,6 +22,9 @@ protected:
 	wxDynamicLibraryList m_DllList;
 
 	wxModularCoreSettings * m_Settings;
+
+	/// a common event handler which shared by all the plugins
+	/// so that the event can be sent from one plugin to another
 	wxEvtHandler * m_Handler;
 
 	template<typename PluginType,
