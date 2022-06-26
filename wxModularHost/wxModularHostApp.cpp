@@ -1,12 +1,12 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        wxModularHostApp.cpp
-// Purpose:     
+// Purpose:
 // Author:      Volodymyr (T-Rex) Triapichko
-// Modified by: 
+// Modified by:
 // Created:     02/08/2013 21:14:33
-// RCS-ID:      
+// RCS-ID:
 // Copyright:   Volodymyr (T-Rex) Triapichko, 2013
-// Licence:     
+// Licence:
 /////////////////////////////////////////////////////////////////////////////
 
 // For compilers that support precompilation, includes "wx/wx.h".
@@ -84,7 +84,7 @@ void wxModularHostApp::Init()
  */
 
 bool wxModularHostApp::OnInit()
-{    
+{
 #if wxUSE_XPM
 	wxImage::AddHandler(new wxXPMHandler);
 #endif
@@ -111,7 +111,7 @@ bool wxModularHostApp::OnInit()
  */
 
 int wxModularHostApp::OnExit()
-{    
+{
 	wxDELETE(m_PluginManager);
 ////@begin wxModularHostApp cleanup
 	return wxApp::OnExit();
@@ -124,7 +124,7 @@ void wxModularHostApp::TestNonGuiPlugins()
 	{
 		if(m_PluginManager->LoadAllPlugins(true)) // true means we load dlls from the same folder of the host(executable) app
 		{
-			for(wxNonGuiPluginBaseList::Node * node = 
+			for(wxNonGuiPluginBaseList::Node * node =
 				m_PluginManager->GetNonGuiPlugins().GetFirst(); node; node = node->GetNext())
 			{
 				wxNonGuiPluginBase * plugin = node->GetData();

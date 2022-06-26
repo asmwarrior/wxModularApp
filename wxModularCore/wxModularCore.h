@@ -29,34 +29,34 @@ protected:
 
 	template<typename PluginType,
 		typename PluginListType>
-		bool RegisterPlugin(PluginType * plugin, 
+		bool RegisterPlugin(PluginType * plugin,
 		PluginListType & list)
 	{
 		list.Append(plugin);
 		return true;
 	}
 
-	template<typename PluginType, 
+	template<typename PluginType,
 		typename PluginListType,
-		typename PluginToDllDictionaryType, 
-		typename DeletePluginFunctionType> 
+		typename PluginToDllDictionaryType,
+		typename DeletePluginFunctionType>
 		bool UnRegisterPlugin(
-			PluginType * plugin, 
-			PluginListType & container, 
+			PluginType * plugin,
+			PluginListType & container,
 			PluginToDllDictionaryType & pluginMap)
 	{
-		typename PluginListType::compatibility_iterator it = 
+		typename PluginListType::compatibility_iterator it =
 			container.Find(plugin);
 		if (it == NULL)
 			return false;
 
-		do 
+		do
 		{
 			wxDynamicLibrary * dll = (wxDynamicLibrary *)pluginMap[plugin];
 			if (!dll) // Probably plugin was not loaded from dll
 				break;
 
-			wxDYNLIB_FUNCTION(DeletePluginFunctionType, 
+			wxDYNLIB_FUNCTION(DeletePluginFunctionType,
 				DeletePlugin, *dll);
 			if (pfnDeletePlugin)
 			{
@@ -74,32 +74,32 @@ protected:
 		return true;
 	}
 
-	template<typename PluginType, 
+	template<typename PluginType,
 		typename PluginListType,
-		typename PluginToDllDictionaryType, 
-		typename DeletePluginFunctionType> 
-	bool UnloadPlugins(PluginListType & list, 
+		typename PluginToDllDictionaryType,
+		typename DeletePluginFunctionType>
+	bool UnloadPlugins(PluginListType & list,
 		PluginToDllDictionaryType & pluginDictoonary)
 	{
 		bool result = true;
 		PluginType * plugin = NULL;
-		while (list.GetFirst() && (plugin =  
+		while (list.GetFirst() && (plugin =
 			list.GetFirst()->GetData()))
 		{
-			result &= UnRegisterPlugin<PluginType, 
+			result &= UnRegisterPlugin<PluginType,
 				PluginListType,
-				PluginToDllDictionaryType, 
-				DeletePluginFunctionType>(plugin, 
+				PluginToDllDictionaryType,
+				DeletePluginFunctionType>(plugin,
 					list, pluginDictoonary);
 		}
 		return result;
 	}
 
-	template <typename PluginType, 
+	template <typename PluginType,
 		typename PluginListType,
-		typename PluginToDllDictionaryType, 
-		typename CreatePluginFunctionType> 
-	bool LoadPlugins(const wxString & pluginsDirectory, 
+		typename PluginToDllDictionaryType,
+		typename CreatePluginFunctionType>
+	bool LoadPlugins(const wxString & pluginsDirectory,
 		PluginListType & list,
 		PluginToDllDictionaryType & pluginDictionary,
 		const wxString & subFolder)
@@ -113,10 +113,10 @@ protected:
 			return false;
 
 		if(!wxDirExists(fn.GetFullPath())) return false;
-		wxString wildcard = wxString::Format(wxT("*.%s"), 
+		wxString wildcard = wxString::Format(wxT("*.%s"),
 			GetPluginExt().GetData());
 		wxArrayString pluginPaths;
-		wxDir::GetAllFiles(fn.GetFullPath(), 
+		wxDir::GetAllFiles(fn.GetFullPath(),
 			&pluginPaths, wildcard);
 		for(size_t i = 0; i < pluginPaths.GetCount(); ++i)
 		{
@@ -124,7 +124,7 @@ protected:
 			wxDynamicLibrary * dll = new wxDynamicLibrary(fileName);
 			if (dll->IsLoaded())
 			{
-				wxDYNLIB_FUNCTION(CreatePluginFunctionType, 
+				wxDYNLIB_FUNCTION(CreatePluginFunctionType,
 					CreatePlugin, *dll);
 				if (pfnCreatePlugin)
 				{
