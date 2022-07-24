@@ -97,6 +97,16 @@
 		<Unit filename="../wxGuiPluginBase/Declarations.h" />
 		<Unit filename="../wxGuiPluginBase/wxGuiPluginBase.h" />
 		<Unit filename="../wxGuiPluginBase/wxGuiPluginWindowBase.h" />
-		<Extensions />
+		<Unit filename="TestPanel1.cpp" />
+		<Unit filename="TestPanel1.h" />
+		<Unit filename="wxsmith/TestPanel1.wxs" />
+		<Extensions>
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="" main="" init_handlers="necessary" language="CPP" />
+				<resources>
+					<wxPanel wxs="wxsmith/TestPanel1.wxs" src="TestPanel1.cpp" hdr="TestPanel1.h" fwddecl="1" i18n="1" name="TestPanel1" language="CPP" />
+				</resources>
+			</wxsmith>
+		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
