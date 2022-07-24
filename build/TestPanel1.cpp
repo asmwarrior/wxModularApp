@@ -21,10 +21,12 @@
 #include <wx/intl.h>
 #include <wx/sizer.h>
 #include <wx/string.h>
+#include <wx/textctrl.h>
 //*)
 
 //(*IdInit(TestPanel1)
 const long TestPanel1::ID_BUTTON1 = wxNewId();
+const long TestPanel1::ID_TEXTCTRL1 = wxNewId();
 const long TestPanel1::ID_BUTTON2 = wxNewId();
 //*)
 
@@ -47,12 +49,16 @@ TestPanel1::TestPanel1(wxGuiPluginBase * plugin, wxWindow* parent,wxWindowID id,
     wxBoxSizer* BoxSizer1;
 
     Create(parent, id, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("id"));
-    BoxSizer1 = new wxBoxSizer(wxHORIZONTAL);
-    Button1 = new wxButton(this, ID_BUTTON1, _("Label"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON1"));
+    BoxSizer1 = new wxBoxSizer(wxVERTICAL);
+    Button1 = new wxButton(this, ID_BUTTON1, _("Send"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON1"));
     BoxSizer1->Add(Button1, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    m_SamppleTextCtrl = new wxTextCtrl(this, ID_TEXTCTRL1, _("Text"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_TEXTCTRL1"));
+    BoxSizer1->Add(m_SamppleTextCtrl, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     Button2 = new wxButton(this, ID_BUTTON2, _("Label"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON2"));
     BoxSizer1->Add(Button2, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     SetSizer(BoxSizer1);
+
+    Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&TestPanel1::OnButtonSendClick);
     //*)
 
     #undef Create
@@ -64,3 +70,10 @@ TestPanel1::~TestPanel1()
     //*)
 }
 
+
+void TestPanel1::OnButtonSendClick(wxCommandEvent& event)
+{
+    wxCommandEvent e(wxEVT_GUI_PLUGIN_INTEROP);
+	e.SetString(m_SamppleTextCtrl->GetValue());
+	GetPlugin()->GetEventHandler()->AddPendingEvent(e);
+}

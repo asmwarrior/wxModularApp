@@ -7,6 +7,7 @@
 #include <wx/panel.h>
 class wxBoxSizer;
 class wxButton;
+class wxTextCtrl;
 //*)
 
 class TestPanel1: public wxGuiPluginWindowBase
@@ -19,18 +20,21 @@ class TestPanel1: public wxGuiPluginWindowBase
         //(*Declarations(TestPanel1)
         wxButton* Button1;
         wxButton* Button2;
+        wxTextCtrl* m_SamppleTextCtrl;
         //*)
 
     protected:
 
         //(*Identifiers(TestPanel1)
         static const long ID_BUTTON1;
+        static const long ID_TEXTCTRL1;
         static const long ID_BUTTON2;
         //*)
 
     private:
 
         //(*Handlers(TestPanel1)
+        void OnButtonSendClick(wxCommandEvent& event);
         //*)
 
         DECLARE_DYNAMIC_CLASS( SampleGuiPluginWindow1 )

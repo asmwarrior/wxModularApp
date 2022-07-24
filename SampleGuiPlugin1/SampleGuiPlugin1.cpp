@@ -1,6 +1,6 @@
 #include "stdwx.h"
 #include "SampleGuiPlugin1.h"
-#include "SampleGuiPluginWindow1.h"
+#include "../build/TestPanel1.h"
 
 IMPLEMENT_DYNAMIC_CLASS(SampleGuiPlugin1, wxObject)
 
@@ -31,5 +31,5 @@ wxString SampleGuiPlugin1::GetId() const
 
 wxWindow * SampleGuiPlugin1::CreatePanel(wxWindow * parent)
 {
-	return new SampleGuiPluginWindow1(this, parent);
+	return new TestPanel1(this, parent);
 }
